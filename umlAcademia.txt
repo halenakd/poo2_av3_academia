@@ -1,0 +1,111 @@
+@startuml
+
+title Academia
+
+class Endereco {
+  +String numero
+  +String logradouro
+  +String bairro
+  +String cep
+  +String estado
+  +String pais
+}
+
+class Pessoa {
+  +String cpf
+  +String nome
+  +String dataNasc
+  +Enedereco endereco
+}
+
+class Usuario {
+  +String cpf
+  +String login
+  +String email
+  +String telefone
+  +String senha
+}
+
+class Colaborador {
+  +int salario
+  +String turno
+}
+
+class Professor {
+  +Aluno alunos
+}
+
+class Aluno {
+  +Colaborador professor
+  +Treino treino
+  +String objetivo
+}
+
+class Treino {
+  +String tipo
+  +int vezes
+  +int duracao
+}
+
+class Exercicio {
+  +int id
+  +String nome
+  +String descricao
+  +int repeticoes
+  +int series
+}
+
+class ExercicioTreino {
+  +Exercicio exercicio
+  +Treino treino
+}
+
+class Dieta {
+  +String duracao
+  +String objetivo
+  +String tipo
+}
+
+class Alimento {
+  +String nome
+  +String tipo
+}
+
+class DietaAlimento {
+  +Alimento alimento
+  +Dieta dieta
+  +String quantidade
+  +String porcao
+}
+
+class DietaAluno {
+  +Aluno aluno
+  +Dieta dieta
+  +Date data_inicio
+}
+
+class AvaliacaoFisica {
+  +Aluno aluno
+  +Date data
+  +int peso
+  +int altura
+  +int imc
+  +int medida_abdomen
+}
+
+Pessoa <|-down- Usuario
+Usuario <|-down- Colaborador
+Colaborador <|-down- Professor
+Usuario <|-down- Aluno
+Pessoa *-- Endereco
+Aluno *-- Treino
+Treino *-- ExercicioTreino
+Exercicio *-- ExercicioTreino
+Dieta *-- DietaAlimento
+Alimento *-- DietaAlimento
+Aluno *-- DietaAluno
+Dieta *-- DietaAluno
+Aluno *-- AvaliacaoFisica
+Aluno --* Professor
+
+@enduml

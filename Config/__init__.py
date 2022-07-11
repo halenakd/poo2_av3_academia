@@ -1,0 +1,1 @@
+__all__ = ['config', 'cria_tabelas']
